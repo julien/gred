@@ -1,5 +1,3 @@
-// gred Gets "subreddits" and displays them
-
 package main
 
 import (
@@ -39,11 +37,9 @@ var (
 	start    time.Time
 	subCount int
 	numSubs  int
-
-	// colors
-	red    = color.New(color.FgRed).SprintFunc()
-	green  = color.New(color.FgYellow).SprintFunc()
-	yellow = color.New(color.FgGreen).SprintFunc()
+	red      = color.New(color.FgRed).SprintFunc()
+	green    = color.New(color.FgYellow).SprintFunc()
+	yellow   = color.New(color.FgGreen).SprintFunc()
 )
 
 func main() {
@@ -112,12 +108,9 @@ func getSub(itemChan chan item, sub string) <-chan item {
 		fmt.Printf("Error parsing sub-reddit: %v\n", err)
 	}
 
-	// items := make([]item, len(r.Data.Children))
-
 	numSubs += len(r.Data.Children)
 
 	for _, child := range r.Data.Children {
-		// items[i] = child.Data
 		itemChan <- child.Data
 	}
 
